@@ -4,7 +4,7 @@
 ## Activate virtual environment:
 > source tgenv/bin/activate
 ## Clone repository:
-> git clone [https://github.com/dcierra/dcierra-project.git](https://github.com/dcierra/school21_info_bot.git)
+> git clone [https://github.com/dcierra/school21_info_bot.git](https://github.com/dcierra/school21_info_bot.git)
 ## cd to directory:
 > cd school21_info_bot
 ## Install requirements:
