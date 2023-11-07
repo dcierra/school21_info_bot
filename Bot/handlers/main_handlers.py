@@ -4,16 +4,23 @@ from aiogram import Router, F
 from aiogram.filters import Command
 from aiogram.types import Message
 from db_utils.commands.get_user import get_user
+from db_utils.commands.set_token import set_token
 from SchoolParser.SchoolRequests import Request
 
 router = Router()
 
 
 def create_request(user):
-    return Request(
+    req = Request(
         cookies={'tokenId': user.token_id},
         headers={'schoolid': user.school_id}
     )
+
+    if req.test_request() == 200:
+        return req
+    else:
+        set_token(user)
+        return create_request(user)
 
 
 @router.message(Command('get_events'))

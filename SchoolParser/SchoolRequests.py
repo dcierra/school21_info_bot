@@ -24,6 +24,20 @@ class Request:
 
         return response
 
+    def test_request(self):
+        response = requests.post(self.url, cookies=self.cookies, headers=self.headers,
+                                 json={
+                                     'operationName': 'getUserRestrictionsInfo',
+                                     'variables': {},
+                                     'query': 'query getUserRestrictionsInfo {\n  school21 {\n    '
+                                              'getUserRestrictions {\n      restrictionId\n     '
+                                              ' restrictionType\n      userId\n      schoolId\n    '
+                                              '  isActive\n      createdTs\n      updatedTs\n     '
+                                              ' __typename\n    }\n    __typename\n  }\n}\n',
+                                 })
+
+        return response.status_code
+
     def get_events(self, limit: int = 6, print_result: bool = True, only_notify: bool = False):
         query_request = ('query getAgendaEvents($from: DateTime!, $to: DateTime!, $limit: Int!) {\n  calendarEventS21 '
                          '{\n    getMyAgendaEvents(from: $from, to: $to, limit: $limit) {\n      agendaItemContext {\n'
